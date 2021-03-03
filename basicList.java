@@ -6,18 +6,19 @@ public class basicList {
 
 	public static void main(String[] args) {
 		
-		//1.¹è¿­»ı¼º
+		//1.ë°°ì—´ìƒì„±
 		int[] arr = new int[10];
 		
-		//2.ÀÔ·Â¹Ş±â
+		//2.ì…ë ¥ë°›ê¸°
 		Scanner sc = new Scanner(System.in);
 		
-		//3.ÀÔ·ÂµÈ ÀÌ¸§À» ¹è¿­¿¡ ¼ø¼­¿¡ ¸Â°Ô ÀúÀå
+		//3.ì…ë ¥ëœ ì´ë¦„ì„ ë°°ì—´ì— ìˆœì„œì— ë§ê²Œ ì €ì¥
 		for(int i = 0; i < 5; i++) {
-			System.out.print("Á¤¼ö¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä: ");
+			System.out.print("ì •ìˆ˜ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”: ");
 			arr[i] = sc.nextInt();
 		}
 		
+		//4.í™”ë©´ì— ì…ë ¥ëœ ê°’ ì¶œë ¥
 		for(int i = 0; i < 5; i++) {
 			System.out.println(arr[i]);
 		}
