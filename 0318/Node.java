@@ -4,12 +4,12 @@ public class Node<E extends Comparable<E>> {
 	private E item;
 	private Node next;
 
-	public Node(E newItem, Node<E> p) { // »ı¼ºÀÚ
+	public Node(E newItem, Node<E> p) { // ìƒì„±ì
 		item = newItem;
 		next = p;
 	}
 
-// get ¸Ş¼Òµå¿Í set ¸Ş¼Òµå
+// get ë©”ì†Œë“œì™€ set ë©”ì†Œë“œ
 	public E getItem() {
 		return item;
 	}
