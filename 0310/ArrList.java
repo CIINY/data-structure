@@ -3,59 +3,59 @@ package week2;
 import java.util.NoSuchElementException;
 
 public class ArrList <E> {
-    private  E a[];     // ¸®½ºÆ®ÀÇ Ç×¸ñµéÀ» ÀúÀåÇÒ ¹è¿­
-    private  int size;  // ¸®½ºÆ®ÀÇ Ç×¸ñ ¼ö
+    private  E a[];     // ë¦¬ìŠ¤íŠ¸ì˜ í•­ëª©ë“¤ì„ ì €ì¥í•  ë°°ì—´
+    private  int size;  // ë¦¬ìŠ¤íŠ¸ì˜ í•­ëª© ìˆ˜
    
-    public  ArrList() { // »ı¼ºÀÚ
-        a = (E[]) new Object[1];  // ÃÖÃÊ·Î 1°³ÀÇ ¿ø¼Ò¸¦ °¡Áø ¹è¿­ »ı¼º
-        size = 0;                 // Ç×¸ñ ¼ö¸¦ 0À¸·Î ÃÊ±âÈ­
+    public  ArrList() { // ìƒì„±ì
+        a = (E[]) new Object[1];  // ìµœì´ˆë¡œ 1ê°œì˜ ì›ì†Œë¥¼ ê°€ì§„ ë°°ì—´ ìƒì„±
+        size = 0;                 // í•­ëª© ìˆ˜ë¥¼ 0ìœ¼ë¡œ ì´ˆê¸°í™”
     }
     public boolean isEmpty() {
     	return size == 0;
-    	} // ¸®½ºÆ®°¡ emptyÀÌ¸é true ¸®ÅÏ
+    	} // ë¦¬ìŠ¤íŠ¸ê°€ emptyì´ë©´ true ë¦¬í„´
     
-    public void insertLast(E newItem) {	// °¡Àå µÚ¿¡ »õ Ç×¸ñ »ğÀÔ              
-        if (size == a.length)   	// ¹è¿­¿¡ ºó °ø°£ÀÌ ¾øÀ¸¸é
-        	resize(2*a.length);  	// ¹è¿­ Å©±â 2¹è·Î È®Àå
-         a[size++] = newItem;    	// »õ Ç×¸ñ »ğÀÔ
+    public void insertLast(E newItem) {	// ê°€ì¥ ë’¤ì— ìƒˆ í•­ëª© ì‚½ì…              
+        if (size == a.length)   	// ë°°ì—´ì— ë¹ˆ ê³µê°„ì´ ì—†ìœ¼ë©´
+        	resize(2*a.length);  	// ë°°ì—´ í¬ê¸° 2ë°°ë¡œ í™•ì¥
+         a[size++] = newItem;    	// ìƒˆ í•­ëª© ì‚½ì…
     }
         
-    public void insert(E newItem, int k) { // »õ Ç×¸ñÀ» k-1¹ø¤Š Ç×¸ñ ´ÙÀ½¿¡ »ğÀÔ, ÁØºñÇÑ ºó ÀÚ¸®¿¡ ¿ø¼Ò »ğÀÔÇÏ±â
-    	if (size == a.length)   		   // ¹è¿­¿¡ ºó °ø°£ÀÌ ¾øÀ¸¸é
-    		resize(2*a.length);			   // ¹è¿­ Å©±â 2¹è·Î È®Àå
-    	for (int i = size-1; i >= k; i--)  a[i+1] = a[i];  // ÇÑ Ä­¾¿ µÚ·Î ÀÌµ¿ (Á¦ÀÏ µÚ¿¡²¨ ¸ÕÀú ÇÑ Ä­¾¿ µÚ·Î ÀÌµ¿)
+    public void insert(E newItem, int k) { // ìƒˆ í•­ëª©ì„ k-1ë²ˆÂŠ í•­ëª© ë‹¤ìŒì— ì‚½ì…, ì¤€ë¹„í•œ ë¹ˆ ìë¦¬ì— ì›ì†Œ ì‚½ì…í•˜ê¸°
+    	if (size == a.length)   		   // ë°°ì—´ì— ë¹ˆ ê³µê°„ì´ ì—†ìœ¼ë©´
+    		resize(2*a.length);			   // ë°°ì—´ í¬ê¸° 2ë°°ë¡œ í™•ì¥
+    	for (int i = size-1; i >= k; i--)  a[i+1] = a[i];  // í•œ ì¹¸ì”© ë’¤ë¡œ ì´ë™ (ì œì¼ ë’¤ì—êº¼ ë¨¼ì € í•œ ì¹¸ì”© ë’¤ë¡œ ì´ë™)
     	a[k] = newItem;
     	size++;
     }
 
-    public E delete(int k) {  // k¹øÂ° Ç×¸ñ »èÁ¦
-		if (isEmpty()) throw new NoSuchElementException(); // underflow °æ¿ì¿¡ ÇÁ·Î±×·¥ Á¤Áö
+    public E delete(int k) {  // kë²ˆì§¸ í•­ëª© ì‚­ì œ
+		if (isEmpty()) throw new NoSuchElementException(); // underflow ê²½ìš°ì— í”„ë¡œê·¸ë¨ ì •ì§€
 		E item = a[k];
-		for (int i = k; i <size; i++)  a[i] = a[i+1];  // ÇÑ Ä­¾¿ ¾ÕÀ¸·Î ÀÌµ¿
+		for (int i = k; i <size; i++)  a[i] = a[i+1];  // í•œ ì¹¸ì”© ì•ìœ¼ë¡œ ì´ë™
 		size--;
-		if (size > 0 && size == a.length/4) // ¹è¿­¿¡ Ç×¸ñµéÀÌ 1/4¸¸ Â÷ÁöÇÑ´Ù¸é		»èÁ¦ÇÑ ºó ÀÚ¸® Ã¤¿ì±â
-			resize(a.length/2); 			// ¹è¿­À» 1/2 Å©±â·Î Ãà¼Ò
+		if (size > 0 && size == a.length/4) // ë°°ì—´ì— í•­ëª©ë“¤ì´ 1/4ë§Œ ì°¨ì§€í•œë‹¤ë©´		ì‚­ì œí•œ ë¹ˆ ìë¦¬ ì±„ìš°ê¸°
+			resize(a.length/2); 			// ë°°ì—´ì„ 1/2 í¬ê¸°ë¡œ ì¶•ì†Œ
 		return item;
     }
     
-    public E peek(int k) {  // k¹øÂ° Ç×¸ñÀ» ¸®ÅÏ, ´Ü¼øÈ÷ ÀĞ±â¸¸ ÇÑ´Ù.
-  		if (isEmpty()) throw new NoSuchElementException(); // underflow °æ¿ì¿¡ ÇÁ·Î±×·¥ Á¤Áö
+    public E peek(int k) {  // kë²ˆì§¸ í•­ëª©ì„ ë¦¬í„´, ë‹¨ìˆœíˆ ì½ê¸°ë§Œ í•œë‹¤.
+  		if (isEmpty()) throw new NoSuchElementException(); // underflow ê²½ìš°ì— í”„ë¡œê·¸ë¨ ì •ì§€
   		return a[k];
       }
     
-    private void resize(int newSize) {		// ¹è¿­ Å©±â Á¶Àı
-		Object[] t = new Object[newSize];   // newSize Å©±âÀÇ »õ·Î¿î ¹è¿­ t »ı¼º
+    private void resize(int newSize) {		// ë°°ì—´ í¬ê¸° ì¡°ì ˆ
+		Object[] t = new Object[newSize];   // newSize í¬ê¸°ì˜ ìƒˆë¡œìš´ ë°°ì—´ t ìƒì„±
 		for (int i = 0; i < size; i++)
-			t[i] = a[i];                    // ¹è¿­ s¸¦ ¹è¿­ t·Î º¹»ç 
-		a = (E[]) t;                        // ¹è¿­ t¸¦ ¹è¿­ a·Î 
+			t[i] = a[i];                    // ë°°ì—´ së¥¼ ë°°ì—´ të¡œ ë³µì‚¬ 
+		a = (E[]) t;                        // ë°°ì—´ të¥¼ ë°°ì—´ aë¡œ 
 	}
     
-	public void print() { // ¹è¿­ÀÇ Ç×¸ñµéÀ» Ãâ·Â
+	public void print() { // ë°°ì—´ì˜ í•­ëª©ë“¤ì„ ì¶œë ¥
 		if (isEmpty()) 
-			System.out.print("¹è¿­ÀÌ ºñ¾îÀÖÀ½.");      
+			System.out.print("ë°°ì—´ì´ ë¹„ì–´ìˆìŒ.");      
 		else
 			for(int i = 0; i < a.length; i++)	
 				System.out.print(a[i]+"\t ");
-				System.out.println();
+		System.out.println();
 	}
 }
